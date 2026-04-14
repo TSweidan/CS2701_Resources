@@ -1,11 +1,11 @@
 package com.example.seasweepers.Models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
     @Id
@@ -21,9 +21,12 @@ public class User {
     @Column(name = "profile_picture")
     private String profilePicture;
 
-    private String area;
+    @Column(name = "country")
+private String country;
+    
 
     private int followers;
+
 
     @Column(name = "total_score")
     private int totalScore;
@@ -39,7 +42,7 @@ public class User {
     public User(String username,
                 String bio,
                 String profilePicture,
-                String area,
+                String country,
                 int followers,
                 int totalScore,
                 int weeklyGoal,
@@ -47,7 +50,7 @@ public class User {
         this.username = username;
         this.bio = bio;
         this.profilePicture = profilePicture;
-        this.area = area;
+        this.country = country;
         this.followers = followers;
         this.totalScore = totalScore;
         this.weeklyGoal = weeklyGoal;
@@ -82,13 +85,13 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
-    public String getArea() {
-        return area;
-    }
+    public String getCountry() {
+    return country;
+}
 
-    public void setArea(String area) {
-        this.area = area;
-    }
+public void setCountry(String country) {
+    this.country = country;
+}
 
     public int getFollowers() {
         return followers;

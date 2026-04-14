@@ -16,9 +16,18 @@ public class LeaderboardService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getLeaderboard() {
-        return userRepository.findAllByOrderByTotalScoreDesc();
+   public List<User> getLeaderboard(String country) {
+
+    List<User> users = userRepository.findAllByOrderByTotalScoreDesc();
+
+    if (country == null || country.equalsIgnoreCase("all")) {
+        return users;
     }
+
+    return users.stream()
+            .filter(user -> user.getCountry().equalsIgnoreCase(country))
+            .toList();
+}
 
     public List<User> getWeeklyLeaderboard() {
         return userRepository.findAllByOrderByWeeklyPointsDesc();
